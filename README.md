@@ -48,3 +48,16 @@ contract CallerContract {
         return abi.decode(data, (uint256));
     }
 }
+
+
+Steps for executing the code- 
+
+1. TargetContract has a single state variable value, which can be set using the setValue function.
+
+2. CallerContract is the contract that delegates calls to TargetContract. It has a constructor that accepts the address of the TargetContract and an owner variable to restrict access to certain functions.
+
+3. The setValueInTargetContract function in CallerContract uses delegate call to invoke the setValue function in TargetContract with the provided value.
+
+4. The getValueFromTargetContract function in CallerContract uses a static call to read the value from TargetContract.
+   
+5. Specifically we can check the value of the value variable in TargetContract after calling setValueInTargetContract, and we can retrieve it using getValueFromTargetContract. 
